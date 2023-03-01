@@ -5,7 +5,7 @@ import { IdGeneratorMock } from "../mocks/IdGeneratorMock"
 import { TokenManagerMock } from "../mocks/TokenManagerMock"
 import { UserDatabaseMock } from "../mocks/UserDatabaseMock"
 
-describe("login", () => {
+describe("getAllUser", () => {
     const userBusiness = new UserBusiness(
         new UserDatabaseMock(),
         new IdGeneratorMock(),
@@ -13,8 +13,8 @@ describe("login", () => {
         new HashManagerMock()
     )
 
-    test("deve retornar uma lista de Users", async () => {
-        const response = await userBusiness.getAll()
+    test("Deve retornar uma lista de Usuários", async () => {
+        const response = await userBusiness.getAllUser()
         expect(response).toHaveLength(2)
         expect(response).toContainEqual({
             id: "id-mock",
@@ -22,7 +22,7 @@ describe("login", () => {
             email: "normal@email.com",
             password: "hash-bananinha",
             createdAt: expect.any(String), // valor dinâmico (pode ser qualquer string)
-            role: USER_ROLES.NORMAL
+            role: USER_ROLES.NORMAL,
         })
     })
 })

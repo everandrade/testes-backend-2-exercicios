@@ -6,6 +6,15 @@ export interface SignupInputDTO {
     password: unknown
 }
 
+export interface DeleteUserInputDTO {
+    token: unknown
+    id: unknown
+}
+
+export interface DeleteUserOutputDTO {
+    message: string
+}
+
 export interface SignupOutputDTO {
     token: string
 }
@@ -20,3 +29,8 @@ export interface LoginOutputDTO {
 }
 
 export type GetAllOutputDTO = UserModel[]
+
+export interface GetUserInputDTO {
+    token: unknown
+    id: unknown
+}

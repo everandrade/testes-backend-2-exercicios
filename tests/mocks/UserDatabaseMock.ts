@@ -8,7 +8,7 @@ export class UserDatabaseMock extends BaseDatabase {
         // não precisa retornar nada, porque é void
     }
 
-    public findByEmail = async (email: string): Promise<UserDB | undefined>  => {
+    public findByEmail = async (email: string): Promise<UserDB | undefined> => {
         switch (email) {
             case "normal@email.com":
                 return {
@@ -33,7 +33,7 @@ export class UserDatabaseMock extends BaseDatabase {
         }
     }
 
-    public getAll = async (): Promise<UserDB[]>  => {
+    public getAll = async (): Promise<UserDB[]> => {
         return [
             {
                 id: "id-mock",
@@ -52,5 +52,54 @@ export class UserDatabaseMock extends BaseDatabase {
                 role: USER_ROLES.ADMIN
             }
         ]
+    }
+
+    public getUser = async (
+        id?: string | undefined
+    ): Promise<UserDB | UserDB[] | undefined> => {
+        if (id === "id-mock") {
+            return {
+                id: "id-mock",
+                name: "Normal Mock",
+                email: "normal@email.com",
+                password: "hash-bananinha",
+                created_at: new Date().toISOString(),
+                role: USER_ROLES.NORMAL,
+            }
+        }
+        return [
+            {
+                id: "id-mock",
+                name: "Normal Mock",
+                email: "normal@email.com",
+                password: "hash-bananinha",
+                created_at: new Date().toISOString(),
+                role: USER_ROLES.NORMAL,
+            },
+            {
+                id: "id-mock",
+                name: "Admin Mock",
+                email: "admin@email.com",
+                password: "hash-bananinha",
+                created_at: new Date().toISOString(),
+                role: USER_ROLES.ADMIN,
+            },
+        ]
+    }
+
+    public deleteUserById = async (): Promise<void> => {
+    }
+
+    public findUserById = async (id: string): Promise<UserDB | undefined> => {
+        if (id === "id-mock") {
+            return {
+                id: "id-mock",
+                name: "Normal Mock",
+                email: "normal@email.com",
+                password: "hash-bananinha",
+                created_at: new Date().toISOString(),
+                role: USER_ROLES.NORMAL
+            }
+        }
     }
 }
