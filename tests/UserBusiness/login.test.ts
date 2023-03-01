@@ -12,11 +12,11 @@ describe("login", () => {
         new TokenManagerMock(),
         new HashManagerMock()
     )
-    
-    test("login bem-sucedido em conta normal retorna token", async () => {
+
+    test("Login bem sucedido, retorna TOKEN", async () => {
         const input: LoginInputDTO = {
             email: "normal@email.com",
-            password: "bananinha"
+            password: "bananinha",
         }
 
         const response = await userBusiness.login(input)
@@ -26,7 +26,7 @@ describe("login", () => {
     test("login bem-sucedido em conta admin retorna token", async () => {
         const input: LoginInputDTO = {
             email: "admin@email.com",
-            password: "bananinha"
+            password: "bananinha",
         }
 
         const response = await userBusiness.login(input)
